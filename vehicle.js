@@ -56,31 +56,33 @@ pc.script.create('vehicle', function (app) {
     var wheelDirection = new Ammo.btVector3(0, -1, 0);
     var wheelAxle = new Ammo.btVector3(-1, 0, 0);
     
+    var wheelRadius = 0.4;
+    
     var wheelsConfig = [{
         isFront: true,
         connection: [0.88, 0.8, 1.2],
-        radius: 0.4,
+        radius: wheelRadius,
         width: 0.4,
         name: 'FR_Wheel' 
     },
     {
         isFront: true,
         connection: [-0.88, 0.8, 1.2],
-        radius: 0.4,
+        radius: wheelRadius,
         width: 0.4,
         name: 'FL_Wheel'
     },
     {
         isFront: false,
         connection: [-0.88, 0.8, -1.2],
-        radius: 0.4,
+        radius: wheelRadius,
         width: 0.4,
         name: 'BL_Wheel'
     },
     {
         isFront: false,
         connection: [0.88, 0.8, -1.2],
-        radius: 0.4,
+        radius: wheelRadius,
         width: 0.4,
         name: 'BR_Wheel'
     }];
@@ -136,7 +138,7 @@ pc.script.create('vehicle', function (app) {
             var i;
             
             // Create box for chassis
-            var chassisShape = new Ammo.btBoxShape(new Ammo.btVector3(0.7, 0.5, 1.6));
+            var chassisShape = new Ammo.btBoxShape(new Ammo.btVector3(0.7, 0.5, 1.0));
             
             // Create compound shape that will contain the chassis shape.
             // We use a compound shape to shift the center of mass with respect to the chassis
@@ -339,10 +341,10 @@ pc.script.create('vehicle', function (app) {
             }
 
             // Apply engine and braking force to the back wheels
-            this.vehicle.applyEngineForce(this.engineForce, 2);
-            this.vehicle.setBrake(this.brakingForce, 2);
-            this.vehicle.applyEngineForce(this.engineForce, 3);
-            this.vehicle.setBrake(this.brakingForce, 3);
+            this.vehicle.applyEngineForce(this.engineForce, 0);
+            this.vehicle.setBrake(this.brakingForce, 0);
+            this.vehicle.applyEngineForce(this.engineForce, 1);
+            this.vehicle.setBrake(this.brakingForce, 1);
             
             // Apply steering to the front wheels
             this.vehicle.setSteeringValue(this.vehicleSteering, 0);
