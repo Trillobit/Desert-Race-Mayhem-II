@@ -297,8 +297,8 @@ pc.script.create('vehicle', function (app) {
             var down = false;
 
             if (this.controls) {
-                left = app.keyboard.isPressed(pc.KEY_A);
-                right = app.keyboard.isPressed(pc.KEY_D);
+                left = app.keyboard.isPressed(pc.KEY_D);
+                right = app.keyboard.isPressed(pc.KEY_A);
                 up = app.keyboard.isPressed(pc.KEY_W);
                 down = app.keyboard.isPressed(pc.KEY_S);
             }
@@ -347,8 +347,8 @@ pc.script.create('vehicle', function (app) {
             this.vehicle.setBrake(this.brakingForce, 1);
             
             // Apply steering to the front wheels
-            this.vehicle.setSteeringValue(this.vehicleSteering, 0);
-            this.vehicle.setSteeringValue(this.vehicleSteering, 1);
+            this.vehicle.setSteeringValue(this.vehicleSteering, 3);
+            this.vehicle.setSteeringValue(this.vehicleSteering, 2);
             
             for (i = 0; i < this.vehicle.getNumWheels(); i++) {
                 // synchronize the wheels with the (interpolated) chassis worldtransform
